@@ -58,27 +58,32 @@ skewed right.
 
 # Include a normal curve to the Histogram that you plotted.
 
-ggplot(gfg_data, aes(HSDegree)) + geom_histogram(aes(y =..density..), bins = 100) + ggtitle("Percentage of populations with High School Degree") + xlab("percentages") + ylab("Community") +   stat_function(fun = dnorm, args = list(mean = mean(gfg_data$HSDegree), sd = sd(gfg_data$HSDegree)))
+ggplot(gfg_data, aes(HSDegree)) + geom_histogram(aes(y =..density..), bins = 100) + ggtitle("Percentage of populations with High School Degree") + xlab("percentages") + ylab("Community") + stat_function(fun = dnorm, args = list(mean = mean(gfg_data$HSDegree), sd = sd(gfg_data$HSDegree)), col = "#1b98e0",size = 5)
 
 # Explain whether a normal distribution can accurately be used as a model for this data.
 
-
+A normal distribution is a bell curve with a 68-95-99.7 distribution. This data is clearly skewed right with an uneven distribution. We can see in the attached graph how the bell curve does not align with the histogram data at all. 
 
 # Create a Probability Plot of the HSDegree variable.
 
+ggplot(gfg_data, aes(sample = HSDegree)) + stat_qq() 
+#I could not find an example of a probability plot anywhere in the reading. The above code is what I found when I googled it but, because of the following questions I don't think that this is correct. 
 
 
 # Answer the following questions based on the Probability Plot:
-# Based on what you see in this probability plot, is the distribution approximately normal? Explain how you know.
+# Based on what you see in this probability plot, is the distribution approximately normal? Explain how you know.I tried to reach out to a specific classmate and post on the boards but no one answered me. 
 
-
+#I don't think I have the correct probability plot so I can't answer this question
 
 # If not normal, is the distribution skewed? If so, in which direction? Explain how you know.
 
-
+#I don't think I have the correct probability plot so I can't answer this question
 
 # Now that you have looked at this data visually for normality, you will now quantify normality with numbers using the stat.desc() function. Include a screen capture of the results produced.
 
+stat.desc(gfg_data, basic = TRUE, norm = FALSE)
 
 
 # In several sentences provide an explanation of the result produced for skew, kurtosis, and z-scores. In addition, explain how a change in the sample size may change your explanation?
+
+#I did not get a result for skew, kurtosis or z-score when I ran the stat.desc function. Did I run it incorrectly? I looked all through the reading and didn't find anymore explanation than what I did. 
