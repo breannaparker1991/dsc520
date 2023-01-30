@@ -1,0 +1,568 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\hypertarget{assignment-assignment-5}{%
+\section{Assignment: ASSIGNMENT 5}\label{assignment-assignment-5}}
+
+\hypertarget{name-parker-breanna}{%
+\section{Name: Parker, Breanna}\label{name-parker-breanna}}
+
+\hypertarget{date-1-29-2023}{%
+\section{Date: 1-29-2023}\label{date-1-29-2023}}
+
+\hypertarget{set-the-working-directory-to-the-root-of-your-dsc-520-directory}{%
+\subsection{Set the working directory to the root of your DSC 520
+directory}\label{set-the-working-directory-to-the-root-of-your-dsc-520-directory}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"C:/Users/brean/OneDrive/Desktop/NucampFolder/projects/dsc520{-}1"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{load-the-datar4dsheights.csv-to}{%
+\subsection{\texorpdfstring{Load the \texttt{data/r4ds/heights.csv}
+to}{Load the data/r4ds/heights.csv to}}\label{load-the-datar4dsheights.csv-to}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{heights\_df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"C:/Users/brean/OneDrive/Desktop/NucampFolder/projects/dsc520{-}1/data/r4ds/heights.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{using-cor-compute-correclation-coefficients-for}{%
+\subsection{\texorpdfstring{Using \texttt{cor()} compute correclation
+coefficients
+for}{Using cor() compute correclation coefficients for}}\label{using-cor-compute-correclation-coefficients-for}}
+
+\hypertarget{height-vs.-earn}{%
+\subsection{height vs.~earn}\label{height-vs.-earn}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{cor}\NormalTok{(heights\_df}\SpecialCharTok{$}\NormalTok{height, heights\_df}\SpecialCharTok{$}\NormalTok{earn)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2418481
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{age-vs.-earn}{%
+\subsubsection{age vs.~earn}\label{age-vs.-earn}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(heights\_df}\SpecialCharTok{$}\NormalTok{age, heights\_df}\SpecialCharTok{$}\NormalTok{earn)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.08100297
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{ed-vs.-earn}{%
+\subsubsection{ed vs.~earn}\label{ed-vs.-earn}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(heights\_df}\SpecialCharTok{$}\NormalTok{ed, heights\_df}\SpecialCharTok{$}\NormalTok{earn)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3399765
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{spurious-correlation}{%
+\subsection{Spurious correlation}\label{spurious-correlation}}
+
+\hypertarget{the-following-is-data-on-us-spending-on-science-space-and-technology-in-millions-of-todays-dollars}{%
+\subsection{The following is data on US spending on science, space, and
+technology in millions of today's
+dollars}\label{the-following-is-data-on-us-spending-on-science-space-and-technology-in-millions-of-todays-dollars}}
+
+\hypertarget{and-suicides-by-hanging-strangulation-and-suffocation-for-the-years-1999-to-2009}{%
+\subsection{and Suicides by hanging strangulation and suffocation for
+the years 1999 to
+2009}\label{and-suicides-by-hanging-strangulation-and-suffocation-for-the-years-1999-to-2009}}
+
+\hypertarget{compute-the-correlation-between-these-variables}{%
+\subsection{Compute the correlation between these
+variables}\label{compute-the-correlation-between-these-variables}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tech\_spending }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{18079}\NormalTok{, }\DecValTok{18594}\NormalTok{, }\DecValTok{19753}\NormalTok{, }\DecValTok{20734}\NormalTok{, }\DecValTok{20831}\NormalTok{, }\DecValTok{23029}\NormalTok{, }\DecValTok{23597}\NormalTok{, }\DecValTok{23584}\NormalTok{, }\DecValTok{25525}\NormalTok{, }\DecValTok{27731}\NormalTok{, }\DecValTok{29449}\NormalTok{)}
+\NormalTok{suicides }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{5427}\NormalTok{, }\DecValTok{5688}\NormalTok{, }\DecValTok{6198}\NormalTok{, }\DecValTok{6462}\NormalTok{, }\DecValTok{6635}\NormalTok{, }\DecValTok{7336}\NormalTok{, }\DecValTok{7248}\NormalTok{, }\DecValTok{7491}\NormalTok{, }\DecValTok{8161}\NormalTok{, }\DecValTok{8578}\NormalTok{, }\DecValTok{9000}\NormalTok{)}
+
+\FunctionTok{cor}\NormalTok{(tech\_spending, suicides)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9920817
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Student Survey As a data science intern with newly learned knowledge in
+skills in statistical correlation and R programming, you will analyze
+the results of a survey recently given to college students. You learn
+that the research question being investigated is: ``Is there a
+significant relationship between the amount of time spent reading and
+the time spent watching television?'' You are also interested if there
+are other significant relationships that can be discovered? The survey
+data is located in this StudentSurvey.csv file.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{survey\_data }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"C:/Users/brean/OneDrive/Desktop/NucampFolder/projects/dsc520{-}1/data/student{-}survey.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Use R to calculate the covariance of the Survey variables and provide an
+explanation of why you would use this calculation and what the results
+indicate.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(corpcor) }
+\FunctionTok{library}\NormalTok{(readr)}
+\FunctionTok{library}\NormalTok{(ggpubr)}
+\FunctionTok{library}\NormalTok{(MASS)}
+\FunctionTok{library}\NormalTok{(ppcor)}
+
+\FunctionTok{cov}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{TimeReading,survey\_data}\SpecialCharTok{$}\NormalTok{TimeTV)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -20.36364
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cov}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{TimeReading,survey\_data}\SpecialCharTok{$}\NormalTok{Happiness)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -10.35009
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cov}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{TimeReading,survey\_data}\SpecialCharTok{$}\NormalTok{Gender)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.08181818
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cov}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{Happiness,survey\_data}\SpecialCharTok{$}\NormalTok{TimeTV)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 114.3773
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cov}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{Gender,survey\_data}\SpecialCharTok{$}\NormalTok{TimeTV)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.04545455
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cov}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{Gender,survey\_data}\SpecialCharTok{$}\NormalTok{Happiness)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.116636
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#covariance is when you\textquotesingle{}re trying to see if when one variable deviates from a mean, that the other variable follows. The positive values mean that they deviate from the mean in the same direction, while negative is opposing. So, what the data is showing is that the more time someone reads, the less time that they watch TV and vice versa. It also is showing that the more time you spend reading, the less happy that you are. Gender isn\textquotesingle{}t really a numerical value and the survey doesn\textquotesingle{}t explain if 0 or 1 is supposed to be male or female.   If one is female than I believe the data is showing that females are happier than males and that females watch more tv than males. }
+\end{Highlighting}
+\end{Shaded}
+
+Examine the Survey data variables. What measurement is being used for
+the variables? Explain what effect changing the measurement being used
+for the variables would have on the covariance calculation. Would this
+be a problem? Explain and provide a better alternative if needed.
+
+\#It looks like Time reading is in hours per week while tv is in minutes
+possibly per day? or maybe per week. This would definitely effect the
+numbers. Time watching tv and reading should both be in minutes per week
+to make sure that the data is being assessed correctly. Happiness is
+based on a percentage and gender is a binary code. Becasue of this you
+can't really calculate covariance too well since there are only two
+options and they're not supposed to be numerical. Also, If we should
+include nonbinary as an option which would complicate using the
+covariance even more so I don't think it should be used for gender. What
+you could do is simply split the groups up and find out the average mean
+of each one for tv, reading, and happiness so that you can compare the
+groups that way. Happiness being based as a percentage is fine but I
+think the numbers should be rounded. I'm not sure how you can really say
+that someone's happiness is 15.22 rather than just 15? Seems irrelevant.
+
+Choose the type of correlation test to perform, explain why you chose
+this test, and make a prediction if the test yields a positive or
+negative correlation?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{TimeReading,survey\_data}\SpecialCharTok{$}\NormalTok{Happiness, }\AttributeTok{method=}\FunctionTok{c}\NormalTok{(}\StringTok{"kendall"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.2889428
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{TimeTV,survey\_data}\SpecialCharTok{$}\NormalTok{Happiness, }\AttributeTok{method=}\FunctionTok{c}\NormalTok{(}\StringTok{"kendall"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4630424
+\end{verbatim}
+
+\#this matches the covariance correlation in that the happiness and
+timeTV have a positive correlation while the happiness and time reading
+has a negative one. I used kendall because it does not require the
+variables to be within a bell curve and it measures the likelihood that
+two variabels will move in the same direction (even if the rates of the
+direction are different)
+
+Perform a correlation analysis of: All variables
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{TimeReading,survey\_data}\SpecialCharTok{$}\NormalTok{TimeTV)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.8830677
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{TimeReading,survey\_data}\SpecialCharTok{$}\NormalTok{Happiness)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.4348663
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{TimeReading,survey\_data}\SpecialCharTok{$}\NormalTok{Gender)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.08964215
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{Happiness,survey\_data}\SpecialCharTok{$}\NormalTok{TimeTV)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.636556
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{Gender,survey\_data}\SpecialCharTok{$}\NormalTok{TimeTV)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.006596673
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{Gender,survey\_data}\SpecialCharTok{$}\NormalTok{Happiness)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1570118
+\end{verbatim}
+
+A single correlation between two a pair of the variables Repeat your
+correlation test in step 2 but set the confidence interval at 99\%
+Describe what the calculations in the correlation matrix suggest about
+the relationship between the variables. Be specific with your
+explanation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor.test}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{TimeReading,survey\_data}\SpecialCharTok{$}\NormalTok{Happiness, }\AttributeTok{method=}\FunctionTok{c}\NormalTok{(}\StringTok{"kendall"}\NormalTok{), }\AttributeTok{conf.level=}\FloatTok{0.99}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in cor.test.default(survey_data$TimeReading, survey_data$Happiness, :
+## Cannot compute exact p-value with ties
+\end{verbatim}
+
+\begin{verbatim}
+## 
+##  Kendall's rank correlation tau
+## 
+## data:  survey_data$TimeReading and survey_data$Happiness
+## z = -1.1921, p-value = 0.2332
+## alternative hypothesis: true tau is not equal to 0
+## sample estimates:
+##        tau 
+## -0.2889428
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor.test}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{TimeTV,survey\_data}\SpecialCharTok{$}\NormalTok{Happiness, }\AttributeTok{method=}\FunctionTok{c}\NormalTok{(}\StringTok{"kendall"}\NormalTok{), }\AttributeTok{conf.level =} \FloatTok{0.99}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in cor.test.default(survey_data$TimeTV, survey_data$Happiness, method =
+## c("kendall"), : Cannot compute exact p-value with ties
+\end{verbatim}
+
+\begin{verbatim}
+## 
+##  Kendall's rank correlation tau
+## 
+## data:  survey_data$TimeTV and survey_data$Happiness
+## z = 1.9582, p-value = 0.05021
+## alternative hypothesis: true tau is not equal to 0
+## sample estimates:
+##       tau 
+## 0.4630424
+\end{verbatim}
+
+\#the z for time reading vs happiness is negative and it represents the
+deviations from the mean. since the p value is greater tha 0.05 in both
+cases (though just barely in the second case), means that there is a
+statistical correlation between the two variables, but that doesn't mean
+that they are significant.
+
+Calculate the correlation coefficient and the coefficient of
+determination, describe what you conclude about the results.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{TimeReading,survey\_data}\SpecialCharTok{$}\NormalTok{Happiness)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.4348663
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{TimeTV,survey\_data}\SpecialCharTok{$}\NormalTok{Happiness)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.636556
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{TimeReading,survey\_data}\SpecialCharTok{$}\NormalTok{Happiness)}\SpecialCharTok{\^{}}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1891087
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{TimeTV,survey\_data}\SpecialCharTok{$}\NormalTok{Happiness)}\SpecialCharTok{\^{}}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4052035
+\end{verbatim}
+
+\#this determines how strong the two variables are related to each
+other. Since it is closer to 0 than 1, it means that the variables are
+not closely related to each other. Though maybe tv has a bigger impact
+on happiness than reading does.
+
+Based on your analysis can you say that watching more TV caused students
+to read less? Explain.
+
+\#It appears that way in the data. However, this could be caused because
+you only have so many hours in the week and those who read, it's a hobby
+that you can't do while also watching tv, so it cuts into tv time.
+However, if someone's hobby is to crochet. They can easily do that while
+watching tv so it doesn't cut into that time.
+
+Pick three variables and perform a partial correlation, documenting
+which variable you are ``controlling''. Explain how this changes your
+interpretation and explanation of the results.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{TimeTV, survey\_data}\SpecialCharTok{$}\NormalTok{TimeReading)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.8830677
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{pcor.test}\NormalTok{(survey\_data}\SpecialCharTok{$}\NormalTok{TimeTV, survey\_data}\SpecialCharTok{$}\NormalTok{TimeReading, survey\_data}\SpecialCharTok{$}\NormalTok{Happiness,)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    estimate      p.value statistic  n gp  Method
+## 1 -0.872945 0.0009753126 -5.061434 11  1 pearson
+\end{verbatim}
+
+\#these results ended up being the same, whether we control for
+happiness or not, meaning that they are not connected.
+
+\end{document}
