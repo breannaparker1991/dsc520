@@ -2,6 +2,7 @@
 output:
   word_document: default
   html_document: default
+  pdf_document: default
 ---
 # Assignment: ASSIGNMENT 6
 # Name: Parker, Breanna
@@ -39,7 +40,7 @@ library(ggplot2)
 ## Fit a linear model using the `age` variable as the predictor and `earn` as the outcome
 ```{r}
 
-age_lm <-  lm(heights_df$age~heights_df$earn)
+age_lm <-  lm(heights_df$earn~heights_df$age)
 
 ```
 
@@ -76,6 +77,8 @@ ggplot(data = heights_df, aes(y = earn, x = age)) +
   geom_line(color='red',data = age_predict_df, aes(y = earn, x = age))
 
 ```
+
+
 
 
 

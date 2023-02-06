@@ -1,7 +1,8 @@
 ---
 output:
-  word_document: default
+  pdf_document: default
   html_document: default
+  word_document: default
 ---
 # Assignment: ASSIGNMENT 7
 # Name: Parker, Breanna
@@ -9,7 +10,7 @@ output:
 
 ## Set the working directory to the root of your DSC 520 directory
 ```{r}
-setwd("C:/Users/brean/OneDrive/Desktop/NucampFolder/projects/dsc520-1")
+#setwd("C:/Users/brean/OneDrive/Desktop/NucampFolder/projects/dsc520-1")
 
 ```
 
@@ -46,7 +47,6 @@ predicted_df <- data.frame(
   age=heights_df$age, sex=heights_df$sex
   )
 
-predicted_df
 ```
 
 
