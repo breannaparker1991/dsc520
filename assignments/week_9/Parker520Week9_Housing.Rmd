@@ -1,7 +1,8 @@
 ---
 output:
-  pdf_document: default
+  word_document: default
   html_document: default
+  pdf_document: default
 ---
 Housing Data
 Work individually on this assignment. You are encouraged to collaborate on ideas and strategies pertinent to this assignment. Data for this assignment is focused on real estate transactions recorded from 1964 to 2016 and can be found in Housing.xlsx. Using your skills in statistical correlation, multiple regression, and R programming, you are interested in the following variables: Sale Price and several other possible predictors.
@@ -12,6 +13,7 @@ Explain any transformations or modifications you made to the dataset
 ```{r}
 library(dplyr)
 library(readxl)
+# tinytex::install_tinytex() to fix the error with pdf knit
 
 housing_data = read_excel("C:/Users/brean/OneDrive/Desktop/NucampFolder/projects/dsc520-1/data/week-7-housing.xlsx")
 colnames(housing_data)[2] <- "sale_price"
@@ -28,9 +30,13 @@ Create two variables; one that will contain the variables Sale Price and Square 
 library(ggplot2)
 library(readxl)
 library(readr)
-setwd("C:/Users/brean/OneDrive/Desktop/NucampFolder/projects/dsc520-1")
-housing_data = read_excel("data/week-7-housing.xlsx")
-print(housing_data)
+library(tidyverse)
+library(knitr)
+library(car)
+
+sale_sq <-  lm(formula = sale_price ~ sq_ft_lot, data=housing_data)
+sale_bed <-  lm(formula = sale_price ~ bedrooms + square_feet + year_built, data=housing_data)
+#I used befrooms, square feet, and year_built because these could all affect sale price. 
 
 ```
 
@@ -38,7 +44,13 @@ print(housing_data)
 Execute a summary() function on two variables defined in the previous step to compare the model results. What are the R2 and Adjusted R2 statistics? Explain what these results tell you about the overall model. Did the inclusion of the additional predictors help explain any large variations found in Sale Price?
 
 ```{r}
+summary(sale_sq)
+# r2 is 0.01435 and adjusted r2 is 0.01428. 
 
+summary(sale_bed)
+# r2 is 0.2189 and adjusted r2 is 0.2187
+
+#the low r2 of sale price and square feet of lot means that they aren't super connected. But if you look at the sale price based on the square foot, number of bedrooms, and year built, the r2 is still low but it means that they are connected but not enough for precise predictions. The sale price is based on more factors than what was used. 
 
 ```
 
@@ -46,6 +58,12 @@ Execute a summary() function on two variables defined in the previous step to co
 Considering the parameters of the multiple regression model you have created. What are the standardized betas for each parameter and what do the values indicate?
 
 ```{r}
+library(lm.beta)
+
+#anova(sale_sq, sale_bed)
+lm.beta(sale_sq)
+lm.beta(sale_bed)
+
 
 ```
 
@@ -54,16 +72,122 @@ Calculate the confidence intervals for the parameters in your model and explain 
 
 ```{r}
 
+library(MASS, pos = 18)
+with(housing_data, (t.test(sale_price, sq_ft_lot, alternative = "two.sided", conf.level = .95)))
+
+#the mean of x falls within the confidence interval so it is the true mean. The 95% confidence interval means that 95% of the data contains the true mean. 
+
 ```
 
 
 Assess the improvement of the new model compared to your original model (simple regression model) by testing whether this change is significant by performing an analysis of variance.
+
+```{r}
+library(QuantPsyc)
+#compareCoefs(sale_sq, sale_bed)
+anova(sale_sq, sale_bed)
+
+```
+
+
 Perform casewise diagnostics to identify outliers and/or influential cases, storing each function's output in a dataframe assigned to a unique variable name.
+
+```{r}
+
+all_variables <- 
+  lm(sale_price ~ square_feet + bath_3qtr_count + bath_full_count + bath_half_count + bedrooms + building_grade + lat + lon + present_use + sale_instrument + sale_reason + sq_ft_lot + year_built + year_renovated + sale_reason,
+   data=housing_data)
+summary(all_variables)
+
+outlierTest(all_variables)
+housing_data_updated <- housing_data[-c(11992,6430,6438,6437,6431,6436,6441,6432,6442,6433),
+  ]
+
+```
+```{r}
+
+str((housing_data_updated))
+
+all_variables_2 <- 
+  lm(sale_price ~ square_feet + bath_3qtr_count + bath_full_count + bath_half_count + bedrooms + building_grade + lat + lon + present_use + sale_instrument + sale_reason + sq_ft_lot + year_built + year_renovated + sale_reason,
+   data=housing_data_updated)
+
+```
+
+
+
 Calculate the standardized residuals using the appropriate command, specifying those that are +-2, storing the results of large residuals in a variable you create.
+
+```{r}
+housing_data_updated$standardized.residuals <- rstandard(all_variables_2)
+housing_data_updated$studentized.residuals <- rstudent(all_variables_2)
+housing_data_updated$cooks.distance <- cooks.distance(all_variables_2)
+housing_data_updated$dfbeta <- dfbeta(all_variables_2)
+housing_data_updated$leverage <- hatvalues(all_variables_2)
+housing_data_updated$covariance.ratios <- covratio(all_variables_2)
+
+
+```
+
+
 Use the appropriate function to show the sum of large residuals.
 Which specific variables have large residuals (only cases that evaluate as TRUE)?
+
+```{r}
+
+housing_data_updated$large.residual <- housing_data_updated$standardized.residuals > 2 | housing_data_updated$studentized.residuals < -2
+
+sum(housing_data_updated$large.residual)
+
+
+```
+
+
 Investigate further by calculating the leverage, cooks distance, and covariance rations. Comment on all cases that are problematics.
 Perform the necessary calculations to assess the assumption of independence and state if the condition is met or not.
+
+```{r}
+
+housing_data_updated[housing_data_updated$large.residual , c("leverage" , "cooks.distance","covariance.ratios") ]
+
+dwt(all_variables_2)
+
+
+```
+
+
 Perform the necessary calculations to assess the assumption of no multicollinearity and state if the condition is met or not.
+
+```{r}
+vif(all_variables_2)
+mean(vif(all_variables_2))
+1/vif(all_variables_2)
+
+```
+
+
 Visually check the assumptions related to the residuals using the plot() and hist() functions. Summarize what each graph is informing you of and if any anomalies are present.
+
+```{r}
+library(ggplot2)
+all_variables_2_fitted <- all_variables_2$fitted.values
+
+histogram <- ggplot(housing_data_updated , aes(studentized.residuals))
+histogram
+
+#with(housing_data_updated, discretePlot(bedrooms, by = prop_type, scale = "frequency"))
+
+#with(housing_data_updated, Hist(standardized.residuals, scale="frequency", breaks="Sturges", col="red", xlab="Studentized Residuals"))
+
+
+#could not get plots to work. 
+
+```
+
+
 Overall, is this regression model unbiased? If an unbiased regression model, what does this tell us about the sample vs. the entire population model?
+
+```{r}
+
+```
+
